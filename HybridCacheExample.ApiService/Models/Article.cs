@@ -1,8 +1,9 @@
-﻿namespace HybridCacheExample.ApiService;
+﻿namespace HybridCacheExample.ApiService.Models;
 
 public class Article
 {
-    public Guid Id { get; set; } = Guid.NewGuid();
+    public int Id { get; set; }
+    public int CategoryId { get; set; }
     public required string Title { get; set; }
     public required string Slug { get; set; }
     public required string Content { get; set; }
