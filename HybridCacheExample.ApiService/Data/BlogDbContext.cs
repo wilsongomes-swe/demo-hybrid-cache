@@ -1,7 +1,7 @@
 ﻿using HybridCacheExample.ApiService.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace HybridCacheExample.ApiService;
+namespace HybridCacheExample.ApiService.Data;
 
 internal sealed class BlogDbContext : DbContext
 {

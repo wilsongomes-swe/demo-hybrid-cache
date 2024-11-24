@@ -1,7 +1,7 @@
 ﻿using HybridCacheExample.ApiService.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace HybridCacheExample.ApiService;
+namespace HybridCacheExample.ApiService.Data;
 
 public static class BlogDbSeeder
 {

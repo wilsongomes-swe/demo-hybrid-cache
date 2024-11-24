@@ -1,4 +1,5 @@
-﻿using HybridCacheExample.ApiService.Models;
+﻿using HybridCacheExample.ApiService.Data;
+using HybridCacheExample.ApiService.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace HybridCacheExample.ApiService.Endpoints;
