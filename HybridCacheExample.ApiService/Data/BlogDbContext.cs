@@ -8,10 +8,7 @@ internal sealed class BlogDbContext : DbContext
     public BlogDbContext(DbContextOptions<BlogDbContext> options, IHostEnvironment env) : base(options)
     {
         if (env.IsDevelopment())
-        {
-            Database.EnsureDeleted();
             Database.EnsureCreated();
-        }
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

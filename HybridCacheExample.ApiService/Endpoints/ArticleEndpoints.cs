@@ -1,5 +1,6 @@
 ﻿using HybridCacheExample.ApiService.Data;
 using HybridCacheExample.ApiService.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace HybridCacheExample.ApiService.Endpoints;
@@ -17,7 +18,7 @@ public static class ArticleEndpoints
         return group;
     }
 
-    private static async Task<IResult> GetArticles(BlogDbContext db, int? categoryId = null)
+    private static async Task<IResult> GetArticles(BlogDbContext db, [FromQuery] int? categoryId = null)
     {
         var articlesQuery = db.Articles.AsNoTracking();
         if (categoryId is not null)
