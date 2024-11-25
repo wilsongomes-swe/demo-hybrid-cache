@@ -18,24 +18,33 @@ public static class ArticleEndpoints
         return group;
     }
 
-    private static async Task<IResult> GetArticles(BlogDbContext db, [FromQuery] int? categoryId = null)
+    private static async Task<IResult> GetArticles(
+        BlogDbContext db,
+        CancellationToken cancellationToken,
+        [FromQuery] int? categoryId = null)
     {
         var articlesQuery = db.Articles.AsNoTracking();
         if (categoryId is not null)
             articlesQuery = articlesQuery.Where(a => a.CategoryId == categoryId);
 
-        var articles = await articlesQuery.ToListAsync();
+        var articles = await articlesQuery.ToListAsync(cancellationToken);
         
         return Results.Ok(articles);
     }
 
-    private static async Task<IResult> GetArticleById(Guid id, BlogDbContext db)
+    private static async Task<IResult> GetArticleById(
+        int id, 
+        BlogDbContext db, 
+        CancellationToken cancellationToken)
     {
-        var article = await db.Articles.FindAsync(id);
+        var article = await db.Articles.FindAsync([id], cancellationToken);
         return article is not null ? Results.Ok(article) : Results.NotFound();
     }
 
-    private static async Task<IResult> CreateArticle(ArticleInput input, BlogDbContext db)
+    private static async Task<IResult> CreateArticle(
+        ArticleInput input, 
+        BlogDbContext db, 
+        CancellationToken cancellationToken)
     {
         var article = new Article
         {
@@ -45,31 +54,38 @@ public static class ArticleEndpoints
             CategoryId = input.CategoryId
         };
 
-        await db.Articles.AddAsync(article);
-        await db.SaveChangesAsync();
+        await db.Articles.AddAsync(article, cancellationToken);
+        await db.SaveChangesAsync(cancellationToken);
         return Results.Created($"/articles/{article.Id}", article);
     }
 
-    private static async Task<IResult> UpdateArticle(Guid id, ArticleInput input, BlogDbContext db)
+    private static async Task<IResult> UpdateArticle(
+        int id, 
+        ArticleInput input, 
+        BlogDbContext db,
+        CancellationToken cancellationToken)
     {
-        var article = await db.Articles.FindAsync(id);
+        var article = await db.Articles.FindAsync([id], cancellationToken);
         if (article is null) return Results.NotFound();
 
         article.Title = input.Title;
         article.Content = input.Content;
         article.Slug = input.Slug;
 
-        await db.SaveChangesAsync();
+        await db.SaveChangesAsync(cancellationToken);
         return Results.NoContent();
     }
 
-    private static async Task<IResult> DeleteArticle(Guid id, BlogDbContext db)
+    private static async Task<IResult> DeleteArticle(
+        int id, 
+        BlogDbContext db,
+        CancellationToken cancellationToken)
     {
-        var article = await db.Articles.FindAsync(id);
+        var article = await db.Articles.FindAsync([id], cancellationToken);
         if (article is null) return Results.NotFound();
 
         db.Articles.Remove(article);
-        await db.SaveChangesAsync();
+        await db.SaveChangesAsync(cancellationToken);
         return Results.NoContent();
     }
 
