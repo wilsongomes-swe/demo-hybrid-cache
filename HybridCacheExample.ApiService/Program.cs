@@ -1,7 +1,5 @@
-using HybridCacheExample.ApiService;
 using HybridCacheExample.ApiService.Data;
 using HybridCacheExample.ApiService.Endpoints;
-using HybridCacheExample.ApiService.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
