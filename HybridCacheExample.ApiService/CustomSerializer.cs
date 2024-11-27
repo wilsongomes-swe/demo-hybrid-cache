@@ -1,4 +1,5 @@
 ﻿using System.Buffers;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
@@ -47,5 +48,14 @@ public class CustomSerializer<T> : IHybridCacheSerializer<T>
         {
             throw new InvalidOperationException("Serialization failed.", ex);
         }
+    }
+}
+
+class SerializerFactory : IHybridCacheSerializerFactory
+{
+    public bool TryCreateSerializer<T>([NotNullWhen(true)] out IHybridCacheSerializer<T>? serializer)
+    {
+        serializer = new CustomSerializer<T>();
+        return true;
     }
 }
