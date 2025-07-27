@@ -21,25 +21,3 @@ No vídeo, abordamos como o **HybridCache** combina o melhor do cache em memóri
 ✅ **Exemplo prático de uso** 
 
 ✅ **Boas práticas para cache eficiente** 
-
----
-
-## 🌐 Conecte-se comigo!
-
-Fique por dentro de mais conteúdos sobre .NET e desenvolvimento:
-
-- [🔗 LinkedIn](https://www.linkedin.com/in/wilsonnetobr/)  
-- [⭐ GitHub](https://github.com/wilsonneto-dev)
-- [🚀 Youtube](https://www.youtube.com/@wilsonneto-dev)
-
-📢 **Siga e compartilhe com outros devs!** 🚀
-
-
----
-
-| [<img src="https://github.com/wilsonneto-dev.png" width="75px;"/>][1] |
-| :-: |
-|[Wilson Neto][1]|
-
-
-[1]: https://github.com/wilsonneto-dev
