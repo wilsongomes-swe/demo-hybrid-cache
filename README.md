@@ -8,7 +8,7 @@ No vídeo, abordamos como o **HybridCache** combina o melhor do cache em memóri
 
 🔗 **Assista ao vídeo completo:**  
 
-[HybridCache no .NET 9: Turbine Suas Aplicações](https://www.youtube.com/watch?v=cHQ57CAhr5g)
+[HybridCache no .NET 9: Turbine Suas Aplicações](https://www.youtube.com/@wilsongomes-swe/videos)
 
 ---
 
